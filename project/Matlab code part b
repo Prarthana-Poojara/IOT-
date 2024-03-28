@@ -1,0 +1,17 @@
+% ThingSpeak settings
+read_api_key = '3GB996LV6HTXW7EN';  % Replace with your ThingSpeak Read API Key
+channel_id = 2486676;
+
+% Read latest data from ThingSpeak
+data = thingSpeakRead(channel_id, 'ReadKey', read_api_key, 'Fields', [1,2,3], 'NumPoints', 1);
+
+% Extract individual sensor data
+latest_temperature = data(1, 1);
+latest_humidity = data(1, 2);
+latest_co2 = data(1, 3);
+
+% Display latest sensor data
+fprintf('Latest Sensor Data:\n');
+fprintf('Temperature: %.2f°C\n', latest_temperature);
+fprintf('Humidity: %.2f%%\n', latest_humidity);
+fprintf('CO2: %.2f ppm\n', latest_co2);
